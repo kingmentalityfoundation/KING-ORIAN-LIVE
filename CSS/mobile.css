@@ -111,13 +111,36 @@
         font-size: 15px;
     }
     
-    /* Action Buttons - Mobile */
+    /* Action Buttons - Mobile FIX */
+    .action-buttons {
+        display: flex;
+        gap: 8px; /* Reduced gap */
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap; /* Prevent wrapping */
+    }
+    
     .action-btn {
-        padding: 12px 14px;
-        font-size: 0.85rem;
+        padding: 10px 8px; /* Reduced padding */
+        font-size: 0.75rem; /* Smaller text */
         min-height: var(--touch-target-min);
         border-radius: var(--radius-md);
+        flex: 1; /* Equal width distribution */
+        min-width: 0; /* Allow shrinking */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
+
+    /* Shorter button text for mobile */
+    .action-btn:nth-child(1)::after { content: "New"; }
+    .action-btn:nth-child(1) .fa-plus + * { display: none; }
+    
+    .action-btn:nth-child(2)::after { content: "Export"; }
+    .action-btn:nth-child(2) .fa-download + * { display: none; }
+    
+    .action-btn:nth-child(3)::after { content: "Clear"; }
+    .action-btn:nth-child(3) .fa-trash + * { display: none; }
 
     /* Follow-up Questions - Mobile */
     .follow-up-questions {
