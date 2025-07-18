@@ -28,12 +28,25 @@
     will-change: transform, box-shadow !important;
 }
 
+/* ENSURE HAMBURGER ICON IS VISIBLE */
+.emergency-menu i {
+    font-size: 18px !important;
+    color: var(--royal-text) !important;
+    display: block !important;
+    line-height: 1 !important;
+}
+
 .emergency-menu:hover,
 .emergency-menu:focus {
     background: linear-gradient(135deg, var(--king-gold), var(--battle-bronze)) !important;
     color: var(--shadow-black) !important;
     transform: translateY(-2px) !important;
     box-shadow: var(--shadow-xl) !important;
+}
+
+.emergency-menu:hover i,
+.emergency-menu:focus i {
+    color: var(--shadow-black) !important;
 }
 
 .emergency-menu:active {
@@ -265,26 +278,8 @@
     font-weight: 400;
 }
 
-/* ===== STATUS INDICATORS ===== */
-
-/* Status Indicator */
-.status-indicator {
-    width: 10px;
-    height: 10px;
-    border-radius: var(--radius-full);
-    background: var(--ember-red);
-    transition: var(--smooth-transition);
-}
-
-.status-indicator.connected {
-    background: var(--king-gold);
-    box-shadow: 0 0 15px rgba(218, 165, 32, 0.6);
-}
-
-.status-indicator.connecting {
-    background: var(--fire-orange);
-    animation: connectionPulse 1.5s ease-in-out infinite;
-}
+/* ===== STATUS INDICATORS - SIMPLIFIED ===== */
+/* Connection status removed for cleaner interface */
 
 /* ===== ANIMATIONS ===== */
 
@@ -300,13 +295,4 @@
     }
 }
 
-@keyframes connectionPulse {
-    0%, 100% { 
-        opacity: 1; 
-        transform: scale(1); 
-    }
-    50% { 
-        opacity: 0.5; 
-        transform: scale(1.2); 
-    }
-}
+/* REMOVED: connectionPulse animation - no longer needed */
