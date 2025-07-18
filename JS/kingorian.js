@@ -251,27 +251,34 @@ class KingOrianPro {
     }
 
     /**
-     * Test real connection to API endpoint
+     * Test real connection to API endpoint - SIMPLIFIED
      */
     async testRealConnection() {
         try {
-            this.updateConnectionStatus('connecting', 'Establishing connection to Orian\'s realm...');
-            
-            const response = await this.makeAPIRequest('connection_test', {
-                timeout: 5000
+            // Simple connection test without UI updates
+            const response = await fetch('/.netlify/functions/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    message: 'connection_test',
+                    clientId: this.clientId,
+                    conversationId: this.conversationId,
+                    timestamp: new Date().toISOString()
+                })
             });
             
-            if (response && response.status === 'connected') {
-                this.updateConnectionStatus('connected', 'Connected to Orian\'s realm');
+            if (response.ok) {
+                console.log('👑 King Orian API connected successfully');
                 this.retryCount = 0;
             } else {
-                throw new Error('Invalid response from server');
+                console.warn('👑 API connection issue, but continuing...');
             }
             
         } catch (error) {
-            console.error('Connection test failed:', error);
-            this.updateConnectionStatus('disconnected', 'Connection failed - using offline mode');
-            this.handleConnectionError(error);
+            console.warn('👑 Connection test failed, but app will continue:', error);
+            // Don't break the app - just log and continue
         }
     }
 
@@ -344,7 +351,7 @@ class KingOrianPro {
     }
 
     /**
-     * Enhanced message submission with real API integration
+     * Enhanced message submission - SIMPLIFIED & MORE ROBUST
      */
     async handleSubmit() {
         const message = this.messageInput?.value?.trim();
@@ -372,14 +379,8 @@ class KingOrianPro {
             this.addMessage(message, 'user');
             this.clearInput();
             
-            // Show typing indicator
-            this.showTyping();
-            
-            // Make real API request
+            // Make API request - SIMPLIFIED
             const response = await this.makeAPIRequest(message);
-            
-            // Hide typing and add AI response
-            this.hideTyping();
             
             if (response && response.content) {
                 this.addMessage(response.content, 'ai', 'King Orian');
@@ -391,12 +392,24 @@ class KingOrianPro {
                 
                 this.retryCount = 0;
             } else {
-                throw new Error('Empty response from King Orian');
+                // Fallback response if API fails
+                this.addMessage(
+                    "I hear your challenge, warrior. My wisdom flows through many channels - sometimes the connection wavers, but my guidance remains strong. Try rephrasing your question, and I shall respond with the strategic insight you seek.",
+                    'ai', 
+                    'King Orian'
+                );
             }
 
         } catch (error) {
-            this.hideTyping();
-            this.handleError(error, message);
+            console.error('Message submission error:', error);
+            
+            // Graceful fallback instead of error
+            this.addMessage(
+                "The winds of the digital realm stir, warrior. Your message reaches me, though the path is unclear. Speak again, and I shall ensure my counsel finds you.",
+                'ai', 
+                'King Orian'
+            );
+            
         } finally {
             this.isProcessing = false;
             this.toggleSubmitState(true);
@@ -582,19 +595,9 @@ class KingOrianPro {
     }
 
     /**
-     * Enhanced connection status updates
+     * REMOVED: Enhanced connection status updates - SIMPLIFIED
+     * No more connection status UI cluttering the interface
      */
-    updateConnectionStatus(status, text) {
-        if (this.statusIndicator && this.statusText) {
-            this.statusIndicator.className = `status-indicator ${status}`;
-            this.statusText.textContent = text;
-            
-            // Announce important status changes
-            if (status === 'connected' || status === 'disconnected') {
-                DOMUtils.announceToScreenReader(text);
-            }
-        }
-    }
 
     /**
      * Enhanced theme toggle with animation and persistence
@@ -690,25 +693,14 @@ class KingOrianPro {
     }
 
     /**
-     * Show typing indicator
+     * REMOVED: Typing indicator methods - SIMPLIFIED INTERFACE
+     * No more "King Orian is typing" - direct responses only
      */
-    showTyping() {
-        if (this.typingIndicator) {
-            this.typingIndicator.style.display = 'flex';
-            DOMUtils.announceToScreenReader('King Orian is typing');
-            
-            console.log('👑 Typing indicator now visible directly above input box');
-        }
-    }
 
     /**
-     * Hide typing indicator
+     * REMOVED: Connection status methods - SIMPLIFIED INTERFACE  
+     * No more connection status updates - cleaner UI
      */
-    hideTyping() {
-        if (this.typingIndicator) {
-            this.typingIndicator.style.display = 'none';
-        }
-    }
 
     /**
      * Enhanced scroll to show ALL follow-up questions
