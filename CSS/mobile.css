@@ -111,36 +111,41 @@
         font-size: 15px;
     }
     
-    /* Action Buttons - Mobile FIX */
+    /* Action Buttons - Mobile FIX for proper fitting */
     .action-buttons {
         display: flex;
-        gap: 8px; /* Reduced gap */
-        justify-content: center;
+        gap: 6px; /* Reduced gap */
+        justify-content: space-between;
         align-items: center;
-        flex-wrap: nowrap; /* Prevent wrapping */
+        width: 100%;
+        padding: 0 4px;
     }
     
     .action-btn {
-        padding: 10px 8px; /* Reduced padding */
-        font-size: 0.75rem; /* Smaller text */
-        min-height: var(--touch-target-min);
-        border-radius: var(--radius-md);
+        padding: 8px 6px; /* Much smaller padding */
+        font-size: 0.7rem; /* Smaller text */
+        min-height: 40px; /* Smaller height */
+        border-radius: 10px;
         flex: 1; /* Equal width distribution */
-        min-width: 0; /* Allow shrinking */
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        max-width: 30%; /* Limit max width */
+        display: flex;
+        flex-direction: column; /* Stack icon and text */
+        align-items: center;
+        gap: 2px;
+        line-height: 1;
     }
 
-    /* Shorter button text for mobile */
-    .action-btn:nth-child(1)::after { content: "New"; }
-    .action-btn:nth-child(1) .fa-plus + * { display: none; }
-    
-    .action-btn:nth-child(2)::after { content: "Export"; }
-    .action-btn:nth-child(2) .fa-download + * { display: none; }
-    
-    .action-btn:nth-child(3)::after { content: "Clear"; }
-    .action-btn:nth-child(3) .fa-trash + * { display: none; }
+    /* Hide text, show only icons on very small screens */
+    @media (max-width: 360px) {
+        .action-btn {
+            font-size: 0;
+            padding: 10px 8px;
+        }
+        
+        .action-btn i {
+            font-size: 16px;
+        }
+    }
 
     /* Follow-up Questions - Mobile */
     .follow-up-questions {
