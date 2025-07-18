@@ -11,10 +11,7 @@ class KingOrianPro {
         this.chatContainer = document.getElementById('chatContainer');
         this.messageInput = document.getElementById('messageInput');
         this.submitBtn = document.getElementById('submitBtn');
-        this.typingIndicator = document.getElementById('typingIndicator');
         this.errorMessage = document.getElementById('errorMessage');
-        this.statusIndicator = document.getElementById('statusIndicator');
-        this.statusText = document.getElementById('statusText');
         this.sidebar = document.getElementById('sidebar');
         this.themeToggle = document.getElementById('themeToggle');
         
@@ -111,15 +108,15 @@ class KingOrianPro {
         // Menu functionality with proper event delegation
         this.setupMenuEventListeners();
         
-        // Network status monitoring
+        // Network status monitoring - SIMPLIFIED
         window.addEventListener('online', () => {
             this.isOnline = true;
-            this.updateConnectionStatus('connected', 'Reconnected to Orian\'s realm');
+            console.log('👑 Network connection restored');
         });
         
         window.addEventListener('offline', () => {
             this.isOnline = false;
-            this.updateConnectionStatus('disconnected', 'Connection lost');
+            console.log('👑 Network connection lost');
         });
 
         // Cleanup on page unload
@@ -283,13 +280,10 @@ class KingOrianPro {
     }
 
     /**
-     * Make API request with enhanced error handling and security
+     * Make API request - SIMPLIFIED & MORE ROBUST
      */
     async makeAPIRequest(message, options = {}) {
-        const {
-            timeout = 30000,
-            retries = this.maxRetries
-        } = options;
+        const { timeout = 30000, retries = this.maxRetries } = options;
 
         if (!this.isOnline) {
             throw new Error('No internet connection');
@@ -403,7 +397,7 @@ class KingOrianPro {
         } catch (error) {
             console.error('Message submission error:', error);
             
-            // Graceful fallback instead of error
+            // Graceful fallback instead of error - better UX
             this.addMessage(
                 "The winds of the digital realm stir, warrior. Your message reaches me, though the path is unclear. Speak again, and I shall ensure my counsel finds you.",
                 'ai', 
@@ -976,14 +970,9 @@ class KingOrianPro {
     }
 
     /**
-     * Handle connection error
+     * REMOVED: Handle connection error - SIMPLIFIED
+     * No longer needed with graceful fallback approach
      */
-    handleConnectionError(error) {
-        // Implement offline functionality
-        if (!this.isOnline) {
-            this.showError('You are offline. Messages will be queued until connection is restored.');
-        }
-    }
 
     /**
      * Cleanup function
