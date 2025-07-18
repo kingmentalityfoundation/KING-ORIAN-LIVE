@@ -1,0 +1,35 @@
+{
+  "name": "king-orian-mvp",
+  "version": "1.0.0",
+  "description": "King Orian - Strategic AI advisor for men's personal development",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'No build step required'",
+    "dev": "netlify dev",
+    "deploy": "netlify deploy --prod"
+  },
+  "keywords": [
+    "ai",
+    "personal-development",
+    "coaching",
+    "mentorship",
+    "strategic-advisor"
+  ],
+  "author": "King Mentality",
+  "license": "MIT",
+  "dependencies": {
+    "openai": "^4.28.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/king-orian-mvp"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/king-orian-mvp/issues"
+  },
+  "homepage": "https://app.kingmentality.org"
+}

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <!-- SEO & Social Media Optimization -->
+    <title>King Orian - The Eternal Mind | AI Strategic Advisor for Men's Development</title>
+    <meta name="description" content="Connect with King Orian, the ultimate AI strategic advisor for men's personal development. Get expert guidance on career, relationships, mindset, and life mastery from an ancient king's wisdom.">
+    <meta name="keywords" content="AI coach, men's development, personal growth, strategic advisor, life coach, mindset, leadership, King Orian, productivity, goal achievement">
+    <meta name="author" content="King Mentality">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kingmentality.org">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="King Orian - The Eternal Mind | AI Strategic Advisor">
+    <meta property="og:description" content="Transform your life with King Orian's ancient wisdom and modern strategy. AI-powered coaching for ambitious men seeking greatness.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kingmentality.org">
+    <meta property="og:site_name" content="King Mentality">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="King Orian - The Eternal Mind">
+    <meta name="twitter:description" content="AI strategic advisor for men's personal development and mental mastery.">
+    <meta name="twitter:creator" content="@kingmentality">
+    
+    <!-- Apple Touch Icons & Manifest -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="King Orian">
+    <meta name="theme-color" content="#DAA520">
+    
+    <!-- Optimized Font Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Roboto+Slab:wght@300;400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" crossorigin="anonymous">
+    
+    <!-- CSS Files - ORDER MATTERS! -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/mobile.css">
+</head>
+<body data-theme="dark">
+    <!-- Skip to Content for Screen Readers -->
+    <a href="#chat-main" class="skip-link">Skip to chat content</a>
+
+    <div class="app-container">
+        <!-- Enhanced Menu Button -->
+        <button class="emergency-menu" id="emergencyMenu" aria-label="Open navigation menu" role="button">
+            <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
+
+        <!-- Enhanced Sidebar -->
+        <nav class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+            <div class="sidebar-header">
+                <div class="sidebar-title">
+                    <i class="fas fa-crown" aria-hidden="true"></i> 
+                    <span>Conversations</span>
+                </div>
+                <button class="close-sidebar" id="closeSidebar" aria-label="Close navigation menu">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <div class="conversation-list" id="conversationList" role="list">
+                <i class="fas fa-scroll" style="font-size: 2rem; margin-bottom: 10px;" aria-hidden="true"></i>
+                <p>No conversations yet</p>
+                <p style="font-size: 0.8rem;">Start your first quest!</p>
+            </div>
+
+            <div style="margin-top: auto; padding-top: 15px; border-top: 1px solid var(--royal-border);">
+                <button class="action-btn" style="width: 100%; margin-bottom: 8px;" onclick="clearAllConversations()" aria-label="Clear all conversations">
+                    <i class="fas fa-trash" aria-hidden="true"></i> Clear All
+                </button>
+                <button class="action-btn" style="width: 100%;" onclick="exportConversations()" aria-label="Export all conversations">
+                    <i class="fas fa-download" aria-hidden="true"></i> Export All
+                </button>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <header class="centered-hero-section" role="banner">
+            <div class="crown-hero">
+                <div class="crown-3d-hero" role="img" aria-label="Royal crown">👑</div>
+                <h1 class="king-title-hero">King Orian — The Eternal Mind</h1>
+                <p class="king-tagline-header">Sovereign of Strategy • Master of Mental Warfare</p>
+                <p class="king-quote-header">"Enter my domain, warrior. I shall forge you into greatness."</p>
+            </div>
+
+            <div class="connection-status" id="connectionStatus" role="status" aria-live="polite">
+                <div class="status-indicator" id="statusIndicator" aria-hidden="true"></div>
+                <span id="statusText">Connecting to Orian's realm...</span>
+            </div>
+
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">
+                <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
+        </header>
+
+        <!-- Main Chat Interface -->
+        <div class="main-container">
+            <main class="royal-chat-container" id="chatContainer" role="main" aria-label="Chat conversation" tabindex="-1">
+                <!-- Chat messages will appear here -->
+            </main>
+
+            <!-- Typing Indicator -->
+            <div class="royal-typing" id="typingIndicator" role="status" aria-live="polite" aria-label="King Orian is typing">
+                <div class="royal-typing-content">
+                    <div class="typing-crown" aria-hidden="true">👑</div>
+                    <span>King Orian contemplates your challenge...</span>
+                    <div class="royal-typing-dots" aria-hidden="true">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Messages -->
+            <div class="royal-error" id="errorMessage" role="alert" aria-live="assertive">
+                <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+                <span>The realm experiences turbulence.</span>
+                <button class="retry-btn" onclick="retryConnection()" aria-label="Retry connection">Retry</button>
+            </div>
+        </div>
+
+        <!-- Input System -->
+        <section class="royal-input-section" role="region" aria-label="Message input area">
+            <div class="input-throne">
+                <label for="messageInput" class="sr-only">Enter your message for King Orian</label>
+                <textarea 
+                    class="royal-input" 
+                    placeholder="State your challenge, warrior..." 
+                    id="messageInput" 
+                    rows="1"
+                    aria-label="Message input"
+                    aria-describedby="input-help"
+                ></textarea>
+                <div id="input-help" class="sr-only">Enter your message and press Enter or click send</div>
+                <button class="royal-send-arrow" id="submitBtn" aria-label="Send message">
+                    <i class="fas fa-arrow-up" aria-hidden="true"></i>
+                </button>
+            </div>
+            
+            <div class="action-buttons" role="group" aria-label="Chat actions">
+                <button class="action-btn" onclick="newConversation()" aria-label="Start new conversation">
+                    <i class="fas fa-plus" aria-hidden="true"></i> New Quest
+                </button>
+                <button class="action-btn" onclick="exportCurrentConversation()" aria-label="Export current conversation">
+                    <i class="fas fa-download" aria-hidden="true"></i> Export
+                </button>
+                <button class="action-btn danger" onclick="clearCurrentChat()" aria-label="Clear current chat">
+                    <i class="fas fa-trash" aria-hidden="true"></i> Clear Chat
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <!-- JavaScript Files - ORDER MATTERS! -->
+    <script src="js/utils.js"></script>
+    <script src="js/kingorian.js"></script>
+</body>
+</html>
